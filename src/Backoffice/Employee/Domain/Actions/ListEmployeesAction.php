@@ -11,7 +11,7 @@ use Spatie\QueryBuilder\QueryBuilder;
 class ListEmployeesAction
 {
     /**
-     * @return Collection<int, Model>
+     * @return Collection<int, Employee>
      */
     public function execute(): Collection
     {

@@ -9,6 +9,9 @@ use Lightit\Backoffice\Task\Domain\Models\Task;
 
 class ListTasksAction
 {
+    /**
+     * @return Collection<int, Task>
+     */
     public function execute(): Collection
     {
         return Task::all();

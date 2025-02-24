@@ -38,7 +38,7 @@ class UpdateTaskRequest extends FormRequest
                 ? $this->string(self::DESCRIPTION)->toString()
                 : $currentTask->description,
             status: $this->has(self::STATUS)
-                ? TaskStatus::from($this->input(self::STATUS))
+                ? TaskStatus::from($this->string(self::STATUS)->toString())
                 : $currentTask->status,
             employee_id: $this->has(self::EMPLOYEE_ID)
                 ? $this->integer(self::EMPLOYEE_ID)

@@ -33,7 +33,9 @@ class StoreTaskRequest extends FormRequest
         return new TaskDTO(
             title: $this->string(self::TITLE)->toString(),
             description: $this->string(self::DESCRIPTION)->toString(),
-            status: TaskStatus::from($this->input(self::STATUS)) ?? TaskStatus::Pending,
+            status: $this->has(self::STATUS)
+                ? TaskStatus::from($this->string(self::STATUS)->toString())
+                : TaskStatus::Pending,
             employee_id: $this->integer(self::EMPLOYEE_ID),
         );
     }

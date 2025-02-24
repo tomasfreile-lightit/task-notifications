@@ -18,6 +18,6 @@ class UpdateTaskAction
             'employee_id' => $dto->employee_id,
         ]);
 
-        return $task->fresh();
+        return $task;
     }
 }

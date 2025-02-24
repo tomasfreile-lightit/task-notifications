@@ -9,6 +9,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Lightit\Backoffice\Employee\Domain\Models\Employee;
 use Lightit\Backoffice\Task\Domain\Enums\TaskStatus;
 
+/**
+ * @property string $title
+ * @property string $description
+ * @property TaskStatus $status
+ * @property int $employee_id
+ */
 class Task extends Model
 {
     protected $fillable = [
@@ -22,6 +28,9 @@ class Task extends Model
         'status' => TaskStatus::class,
     ];
 
+    /**
+     * @return BelongsTo<Employee, $this>
+     */
     public function employee(): BelongsTo
     {
         return $this->belongsTo(Employee::class);
