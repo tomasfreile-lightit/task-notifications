@@ -6,13 +6,13 @@ namespace Lightit\Backoffice\Task\Domain\DataTransferObjects;
 
 use Lightit\Backoffice\Task\Domain\Enums\TaskStatus;
 
-class TaskDTO
+class StoreTaskDTO
 {
     public function __construct(
         public readonly string $title,
         public readonly string $description,
         public readonly TaskStatus $status,
-        public readonly int|null $employee_id,
+        public readonly int $employee_id,
     ) {
     }
 
@@ -22,7 +22,7 @@ class TaskDTO
             title: $data['title'],
             description: $data['description'],
             status: TaskStatus::from($data['status'] ?? TaskStatus::Pending->value),
-            employee_id: $data['employee_id'] ?? null,
+            employee_id: $data['employee_id'],
         );
     }
 
@@ -35,4 +35,4 @@ class TaskDTO
             'employee_id' => $this->employee_id,
         ];
     }
-}
+} 

@@ -6,8 +6,9 @@ use Lightit\Backoffice\Employee\App\Controllers\ListEmployeesController;
 use Lightit\Backoffice\Employee\App\Controllers\StoreEmployeeController;
 use Lightit\Backoffice\Task\App\Controllers\GetTaskController;
 use Lightit\Backoffice\Task\App\Controllers\ListTasksController;
-use Lightit\Backoffice\Task\App\Controllers\UpsertTaskController;
-use Lightit\Backoffice\Task\Domain\Actions\UpsertTaskAction;
+use Lightit\Backoffice\Task\App\Controllers\StoreTaskController;
+use Lightit\Backoffice\Task\App\Controllers\UpdateTaskController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -43,8 +44,8 @@ Route::prefix('employees')
 */
 
 Route::prefix('tasks')->group(function () {
-    Route::post('/', UpsertTaskController::class)->name('tasks.create');
-    Route::put('/{task}', UpsertTaskController::class)->name('tasks.update');
+    Route::post('/', StoreTaskController::class)->name('tasks.create');
+    Route::put('/{task}', UpdateTaskController::class)->name('tasks.update');
     Route::get('/', ListTasksController::class)->name('tasks.list');
     Route::get('/{task}', GetTaskController::class)->name('tasks.show'); 
 });
