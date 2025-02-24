@@ -35,4 +35,4 @@ class StoreTaskDTO
             'employee_id' => $this->employee_id,
         ];
     }
-} 
+}

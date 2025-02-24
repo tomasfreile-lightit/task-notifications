@@ -11,8 +11,11 @@ use Lightit\Backoffice\Task\Domain\Enums\TaskStatus;
 class UpdateTaskRequest extends FormRequest
 {
     public const TITLE = 'title';
+
     public const DESCRIPTION = 'description';
+
     public const STATUS = 'status';
+
     public const EMPLOYEE_ID = 'employee_id';
 
     public function rules(): array
@@ -29,4 +32,4 @@ class UpdateTaskRequest extends FormRequest
     {
         return UpdateTaskDTO::fromArray($this->validated());
     }
-} 
+}

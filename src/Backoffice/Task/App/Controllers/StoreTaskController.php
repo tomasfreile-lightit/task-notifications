@@ -19,4 +19,4 @@ class StoreTaskController
             ->success($task, TaskTransformer::class)
             ->respond(JsonResponse::HTTP_CREATED);
     }
-} 
+}

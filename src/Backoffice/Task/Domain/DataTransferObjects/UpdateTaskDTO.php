@@ -9,10 +9,10 @@ use Lightit\Backoffice\Task\Domain\Enums\TaskStatus;
 class UpdateTaskDTO
 {
     public function __construct(
-        public readonly ?string $title,
-        public readonly ?string $description,
-        public readonly ?TaskStatus $status,
-        public readonly ?int $employee_id,
+        public readonly string|null $title,
+        public readonly string|null $description,
+        public readonly TaskStatus|null $status,
+        public readonly int|null $employee_id,
     ) {
     }
 
@@ -33,6 +33,6 @@ class UpdateTaskDTO
             'description' => $this->description,
             'status' => $this->status?->value,
             'employee_id' => $this->employee_id,
-        ], fn ($value) => !is_null($value));
+        ], fn ($value) => ! is_null($value));
     }
-} 
+}

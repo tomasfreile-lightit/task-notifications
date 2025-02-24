@@ -13,4 +13,4 @@ class StoreTaskAction
     {
         return Task::create($dto->toArray());
     }
-} 
+}

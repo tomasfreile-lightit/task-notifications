@@ -20,4 +20,4 @@ class UpdateTaskController
             ->success($task, TaskTransformer::class)
             ->respond();
     }
-} 
+}

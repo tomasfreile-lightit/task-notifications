@@ -15,4 +15,4 @@ class UpdateTaskAction
 
         return $task->fresh();
     }
-} 
+}
