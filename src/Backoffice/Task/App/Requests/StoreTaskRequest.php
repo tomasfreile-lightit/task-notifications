@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Lightit\Backoffice\Task\App\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Lightit\Backoffice\Task\Domain\DataTransferObjects\StoreTaskDTO;
 use Lightit\Backoffice\Task\Domain\DataTransferObjects\TaskDTO;
 use Lightit\Backoffice\Task\Domain\Enums\TaskStatus;
 
