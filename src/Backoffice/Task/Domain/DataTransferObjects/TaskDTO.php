@@ -9,30 +9,43 @@ use Lightit\Backoffice\Task\Domain\Enums\TaskStatus;
 class TaskDTO
 {
     public function __construct(
-        public readonly string $title,
-        public readonly string $description,
-        public readonly TaskStatus $status,
-        public readonly int|null $employee_id,
+        public readonly ?string $title = null,
+        public readonly ?string $description = null,
+        public readonly ?TaskStatus $status = null,
+        public readonly ?int $employee_id = null,
     ) {
     }
 
     public static function fromArray(array $data): self
     {
         return new self(
-            title: $data['title'],
-            description: $data['description'],
-            status: TaskStatus::from($data['status'] ?? TaskStatus::PENDING->value),
+            title: $data['title'] ?? null,
+            description: $data['description'] ?? null,
+            status: isset($data['status']) ? TaskStatus::from($data['status']) : null,
             employee_id: $data['employee_id'] ?? null,
         );
     }
 
     public function toArray(): array
     {
-        return [
-            'title' => $this->title,
-            'description' => $this->description,
-            'status' => $this->status->value,
-            'employee_id' => $this->employee_id,
-        ];
+        $data = [];
+
+        if (isset($this->title)) {
+            $data['title'] = $this->title;
+        }
+
+        if (isset($this->description)) {
+            $data['description'] = $this->description;
+        }
+
+        if (isset($this->status)) {
+            $data['status'] = $this->status->value;
+        }
+
+        if (isset($this->employee_id)) {
+            $data['employee_id'] = $this->employee_id;
+        }
+
+        return $data;
     }
 }

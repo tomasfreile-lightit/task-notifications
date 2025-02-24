@@ -32,8 +32,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('employees')
     ->group(static function () {
-        Route::post('/', StoreEmployeeController::class)->name('employees');
-        Route::get('/', ListEmployeesController::class)->name('employees');
+        Route::post('/', StoreEmployeeController::class)->name('employees.create');
+        Route::get('/', ListEmployeesController::class)->name('employees.list');
     });
 
 /*
@@ -42,9 +42,9 @@ Route::prefix('employees')
 |--------------------------------------------------------------------------
 */
 
-Route::prefix('tasks')
-    ->group(static function () {
-        Route::post('/', UpsertTaskController::class)->name('tasks');
-        Route::get('/', ListTasksController::class)->name('tasks');
-        Route::get('/{task}', GetTaskController::class)->name('tasks');
-    });
+Route::prefix('tasks')->group(function () {
+    Route::post('/', UpsertTaskController::class)->name('tasks.create');
+    Route::put('/{task}', UpsertTaskController::class)->name('tasks.update');
+    Route::get('/', ListTasksController::class)->name('tasks.list');
+    Route::get('/{task}', GetTaskController::class)->name('tasks.show'); 
+});
