@@ -10,10 +10,10 @@ use Lightit\Backoffice\Employee\Domain\Models\Employee;
 use Lightit\Backoffice\Task\Domain\Enums\TaskStatus;
 
 /**
- * @property string $title
- * @property string $description
+ * @property string     $title
+ * @property string     $description
  * @property TaskStatus $status
- * @property int $employee_id
+ * @property int        $employee_id
  */
 class Task extends Model
 {
