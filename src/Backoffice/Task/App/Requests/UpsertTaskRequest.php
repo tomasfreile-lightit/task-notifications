@@ -11,8 +11,11 @@ use Lightit\Backoffice\Task\Domain\Enums\TaskStatus;
 class UpsertTaskRequest extends FormRequest
 {
     public const TITLE = 'title';
+
     public const DESCRIPTION = 'description';
+
     public const STATUS = 'status';
+
     public const EMPLOYEE_ID = 'employee_id';
 
     public function rules(): array
@@ -24,7 +27,7 @@ class UpsertTaskRequest extends FormRequest
             self::EMPLOYEE_ID => ['required', 'exists:employees,id'],
         ];
 
-        if (!$this->isMethod('POST')) {
+        if (! $this->isMethod('POST')) {
             $rules[self::TITLE] = ['sometimes', 'string', 'max:255'];
             $rules[self::DESCRIPTION] = ['sometimes', 'string'];
             $rules[self::EMPLOYEE_ID] = ['sometimes', 'exists:employees,id'];

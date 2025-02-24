@@ -10,7 +10,7 @@ use Lightit\Backoffice\Task\Domain\Models\Task;
 
 class UpsertTaskAction
 {
-    public function execute(TaskDTO $dto, ?Task $task = null): Task
+    public function execute(TaskDTO $dto, Task|null $task = null): Task
     {
         if ($task) {
             $updateData = $dto->toArray();
@@ -20,6 +20,7 @@ class UpsertTaskAction
             }
 
             $task->update($updateData);
+
             return $task->fresh();
         }
 

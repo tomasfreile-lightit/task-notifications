@@ -12,7 +12,7 @@ use Lightit\Backoffice\Task\Domain\Models\Task;
 
 class UpsertTaskController
 {
-    public function __invoke(UpsertTaskRequest $request, UpsertTaskAction $action, ?Task $task = null): JsonResponse
+    public function __invoke(UpsertTaskRequest $request, UpsertTaskAction $action, Task|null $task = null): JsonResponse
     {
         $task = $action->execute($request->toDto(), $task);
 

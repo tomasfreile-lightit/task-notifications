@@ -9,10 +9,10 @@ use Lightit\Backoffice\Task\Domain\Enums\TaskStatus;
 class TaskDTO
 {
     public function __construct(
-        public readonly ?string $title = null,
-        public readonly ?string $description = null,
-        public readonly ?TaskStatus $status = null,
-        public readonly ?int $employee_id = null,
+        public readonly string|null $title = null,
+        public readonly string|null $description = null,
+        public readonly TaskStatus|null $status = null,
+        public readonly int|null $employee_id = null,
     ) {
     }
 
