@@ -24,7 +24,7 @@ class UpsertTaskRequest extends FormRequest
             self::TITLE => ['required', 'string', 'max:255'],
             self::DESCRIPTION => ['required', 'string'],
             self::STATUS => ['sometimes', 'string', 'in:' . implode(',', TaskStatus::values())],
-            self::EMPLOYEE_ID => ['sometimes', 'nullable', 'exists:employees,id'],
+            self::EMPLOYEE_ID => ['required', 'nullable', 'exists:employees,id'],
         ];
     }
 
