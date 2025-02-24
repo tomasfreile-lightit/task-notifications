@@ -10,6 +10,9 @@ use Spatie\QueryBuilder\QueryBuilder;
 
 class ListEmployeesAction
 {
+    /**
+     * @return Collection<int, Model>
+     */
     public function execute(): Collection
     {
         return QueryBuilder::for(Employee::class)

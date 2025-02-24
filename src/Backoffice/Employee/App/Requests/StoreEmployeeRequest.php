@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Lightit\Backoffice\Employee\App\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -21,6 +23,9 @@ class StoreEmployeeRequest extends FormRequest
 
     public function toDto(): EmployeeDTO
     {
-        return EmployeeDTO::fromArray($this->validated());
+        return new EmployeeDTO(
+            name: $this->string(self::NAME)->toString(),
+            email: $this->string(self::EMAIL)->toString(),
+        );
     }
 }

@@ -6,6 +6,7 @@ namespace Lightit\Backoffice\Task\App\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Lightit\Backoffice\Task\Domain\DataTransferObjects\StoreTaskDTO;
+use Lightit\Backoffice\Task\Domain\DataTransferObjects\TaskDTO;
 use Lightit\Backoffice\Task\Domain\Enums\TaskStatus;
 
 class StoreTaskRequest extends FormRequest
@@ -28,8 +29,13 @@ class StoreTaskRequest extends FormRequest
         ];
     }
 
-    public function toDto(): StoreTaskDTO
+    public function toDto(): TaskDTO
     {
-        return StoreTaskDTO::fromArray($this->validated());
+        return new TaskDTO(
+            title: $this->string(self::TITLE)->toString(),
+            description: $this->string(self::DESCRIPTION)->toString(),
+            status: TaskStatus::from($this->input(self::STATUS)) ?? TaskStatus::Pending,
+            employee_id: $this->integer(self::EMPLOYEE_ID),
+        );
     }
 }
