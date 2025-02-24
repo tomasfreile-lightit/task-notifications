@@ -16,8 +16,8 @@ class ListEmployeesAction
     public function execute(): Collection
     {
         return QueryBuilder::for(Employee::class)
-            ->allowedFilters(Employee::class)
-            ->allowedSorts(Employee::class)
+            ->allowedFilters(['email', 'name'])
+            ->allowedSorts(['email', 'name'])
             ->get();
     }
 }

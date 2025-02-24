@@ -16,7 +16,6 @@ return new class extends Migration
             $table->text('description');
             $table->string('status')->default('pending');
             $table->foreignId('employee_id')
-                        ->nullable()
                         ->constrained('employees')
                         ->nullOnDelete();
             $table->timestamps();

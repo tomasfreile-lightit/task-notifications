@@ -15,6 +15,9 @@ class Employee extends Model
         'email',
     ];
 
+    /**
+     * @return HasMany<Task, $this>
+     */
     public function tasks(): HasMany
     {
         return $this->hasMany(Task::class);
