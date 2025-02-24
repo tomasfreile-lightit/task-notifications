@@ -8,7 +8,10 @@ use Lightit\Backoffice\Task\App\Controllers\GetTaskController;
 use Lightit\Backoffice\Task\App\Controllers\ListTasksController;
 use Lightit\Backoffice\Task\App\Controllers\StoreTaskController;
 use Lightit\Backoffice\Task\App\Controllers\UpdateTaskController;
-
+use Lightit\Backoffice\Users\App\Controllers\DeleteUserController;
+use Lightit\Backoffice\Users\App\Controllers\GetUserController;
+use Lightit\Backoffice\Users\App\Controllers\ListUserController;
+use Lightit\Backoffice\Users\App\Controllers\StoreUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +27,20 @@ use Lightit\Backoffice\Task\App\Controllers\UpdateTaskController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+/*
+|--------------------------------------------------------------------------
+| Users Routes
+|--------------------------------------------------------------------------
+*/
+Route::prefix('users')
+    ->middleware([])
+    ->group(static function () {
+        Route::get('/', ListUserController::class);
+        Route::get('/{user}', GetUserController::class)->withTrashed();
+        Route::post('/', StoreUserController::class);
+        Route::delete('/{user}', DeleteUserController::class);
+    });
 
 /*
 |--------------------------------------------------------------------------
