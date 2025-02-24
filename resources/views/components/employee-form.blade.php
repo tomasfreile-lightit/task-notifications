@@ -24,7 +24,7 @@
         document.getElementById('employee-form').addEventListener('submit', function(e) {
             e.preventDefault();
 
-            fetch('{{ route('employees') }}', {
+            fetch('{{ route('employees.create') }}', {
                 method: 'POST',
                 body: new FormData(this),
                 headers: {

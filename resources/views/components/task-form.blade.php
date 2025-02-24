@@ -161,7 +161,7 @@
         }
         formData.delete('task_id');
 
-        fetch('{{ route('tasks') }}', {
+        fetch('{{ route('tasks.create') }}', {
             method: 'POST',
             body: formData,
             headers: {
