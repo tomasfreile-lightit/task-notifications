@@ -1,6 +1,6 @@
 <div class="form-container">
     <h2 class="mb-4">Task Management</h2>
-    <form id="taskForm" action="{{ route('tasks') }}" method="POST">
+    <form id="taskForm" action="{{ route('tasks.create') }}" method="POST">
         @csrf
 
         <div class="form-group">
@@ -62,7 +62,7 @@
 
         select.innerHTML = '<option value="">Select Employee</option>';
 
-        fetch('/employees', {
+        fetch('{{ route('employees.list') }}', {
             headers: {
                 'Accept': 'application/json',
                 'X-Requested-With': 'XMLHttpRequest'
@@ -89,7 +89,7 @@
     function loadTasks(select) {
         if (tasksLoaded) return;
 
-        fetch('/tasks', {
+        fetch('{{ route('tasks.list') }}', {
             headers: {
                 'Accept': 'application/json',
                 'X-Requested-With': 'XMLHttpRequest'
@@ -120,7 +120,7 @@
             return;
         }
 
-        fetch(`/tasks/${taskId}`, {
+        fetch('{{ route('tasks.create') }}/' + taskId, {
             headers: {
                 'Accept': 'application/json',
                 'X-Requested-With': 'XMLHttpRequest'
