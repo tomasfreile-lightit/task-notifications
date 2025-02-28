@@ -16,7 +16,7 @@ class UpdateTaskRequest extends FormRequest
 
     public const STATUS = 'status';
 
-    public const EMPLOYEE_ID = 'employee_id';
+    public const EMPLOYEE_ID = 'employeeId';
 
     public function rules(): array
     {
@@ -40,9 +40,9 @@ class UpdateTaskRequest extends FormRequest
             status: $this->has(self::STATUS)
                 ? TaskStatus::from($this->string(self::STATUS)->toString())
                 : $currentTask->status,
-            employee_id: $this->has(self::EMPLOYEE_ID)
+            employeeId: $this->has(self::EMPLOYEE_ID)
                 ? $this->integer(self::EMPLOYEE_ID)
-                : $currentTask->employee_id,
+                : $currentTask->employeeId,
         );
     }
 }

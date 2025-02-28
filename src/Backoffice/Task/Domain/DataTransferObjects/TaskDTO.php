@@ -6,13 +6,13 @@ namespace Lightit\Backoffice\Task\Domain\DataTransferObjects;
 
 use Lightit\Backoffice\Task\Domain\Enums\TaskStatus;
 
-class TaskDTO
+readonly class TaskDTO
 {
     public function __construct(
         public string $title,
         public string $description,
         public TaskStatus $status,
-        public int $employee_id,
+        public int $employeeId,
     ) {
     }
 }

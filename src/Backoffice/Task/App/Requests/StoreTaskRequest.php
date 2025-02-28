@@ -16,7 +16,7 @@ class StoreTaskRequest extends FormRequest
 
     public const STATUS = 'status';
 
-    public const EMPLOYEE_ID = 'employee_id';
+    public const EMPLOYEE_ID = 'employeeId';
 
     public function rules(): array
     {
@@ -36,7 +36,7 @@ class StoreTaskRequest extends FormRequest
             status: $this->has(self::STATUS)
                 ? TaskStatus::from($this->string(self::STATUS)->toString())
                 : TaskStatus::Pending,
-            employee_id: $this->integer(self::EMPLOYEE_ID),
+            employeeId: $this->integer(self::EMPLOYEE_ID),
         );
     }
 }

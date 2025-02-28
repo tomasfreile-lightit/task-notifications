@@ -15,7 +15,7 @@ class UpdateTaskAction
             'title' => $dto->title,
             'description' => $dto->description,
             'status' => $dto->status,
-            'employee_id' => $dto->employee_id,
+            'employee_id' => $dto->employeeId,
         ]);
 
         return $task;

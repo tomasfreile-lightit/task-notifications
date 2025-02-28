@@ -19,7 +19,7 @@ class UpdateTaskController
             title: $task->title,
             description: $task->description,
             status: $task->status,
-            employee_id: $task->employee_id,
+            employeeId: $task->employee_id,
         );
 
         $updatedTask = $action->execute($task, $request->toDto($currentTaskDto));

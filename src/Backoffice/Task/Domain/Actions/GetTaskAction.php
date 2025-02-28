@@ -8,8 +8,8 @@ use Lightit\Backoffice\Task\Domain\Models\Task;
 
 class GetTaskAction
 {
-    public function execute(int $id): Task
+    public function execute(Task $task): Task
     {
-        return Task::findOrFail($id);
+        return $task;
     }
 }

@@ -40,7 +40,7 @@
 
         <div class="form-group">
             <label for="assigned_to">Assign to Employee</label>
-            <select name="employee_id" class="form-control" required onclick="loadEmployees(this)">
+            <select name="employeeId" class="form-control" required onclick="loadEmployees(this)">
                 <option value="">Select Employee</option>
             </select>
         </div>
@@ -116,7 +116,7 @@
             document.querySelector('input[name="title"]').value = '';
             document.querySelector('textarea[name="description"]').value = '';
             document.querySelector('select[name="status"]').value = 'pending';
-            document.querySelector('select[name="employee_id"]').value = '';
+            document.querySelector('select[name="employeeId"]').value = '';
             return;
         }
 
@@ -133,9 +133,9 @@
                 document.querySelector('textarea[name="description"]').value = task.description;
                 document.querySelector('select[name="status"]').value = task.status;
 
-                const employeeSelect = document.querySelector('select[name="employee_id"]');
+                const employeeSelect = document.querySelector('select[name="employeeId"]');
                 await loadEmployees(employeeSelect);
-                employeeSelect.value = task.employee_id;
+                employeeSelect.value = task.employeeId;
             })
             .catch(error => console.error('Error loading task details:', error));
     }
@@ -154,15 +154,18 @@
         e.preventDefault();
         const formData = new FormData(this);
         const action = formData.get('action');
+        let url = '{{ route('tasks.create') }}';
+        let method = 'POST';
 
         if (action === 'update') {
             const taskId = formData.get('task_id');
             formData.append('id', taskId);
+            url = '{{ route('tasks.create') }}/' + taskId;
+            method = 'PUT';
         }
-        formData.delete('task_id');
 
-        fetch('{{ route('tasks.create') }}', {
-            method: 'POST',
+        fetch(url, {
+            method: method,
             body: formData,
             headers: {
                 'Accept': 'application/json',
@@ -186,7 +189,7 @@
                 this.reset();
                 document.getElementById('taskSelectGroup').style.display = 'none';
                 document.getElementById('action').value = 'create';
-                const employeeSelect = document.querySelector('select[name="employee_id"]');
+                const employeeSelect = document.querySelector('select[name="employeeId"]');
                 employeeSelect.selectedIndex = 0;
                 employeesLoaded = false;
                 tasksLoaded = false;

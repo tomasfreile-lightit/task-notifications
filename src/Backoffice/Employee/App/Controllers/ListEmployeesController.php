@@ -16,6 +16,6 @@ class ListEmployeesController
 
         return responder()
             ->success($employees, EmployeeTransformer::class)
-            ->respond(JsonResponse::HTTP_OK);
+            ->respond();
     }
 }

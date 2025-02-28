@@ -13,10 +13,8 @@ class GetTaskController
 {
     public function __invoke(Task $task, GetTaskAction $action): JsonResponse
     {
-        $task = $action->execute($task->id);
-
         return responder()
-            ->success($task, TaskTransformer::class)
+            ->success($action->execute($task), TaskTransformer::class)
             ->respond();
     }
 }
