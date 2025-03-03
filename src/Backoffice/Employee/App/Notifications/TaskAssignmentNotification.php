@@ -34,16 +34,19 @@ abstract class TaskAssignmentNotification extends Notification implements Should
     protected function getFromAddress(): string
     {
         $address = config('mail.from.address');
-        return (is_string($address) && !empty($address)) ? $address : 'default@example.com';
+
+        return (is_string($address) && ! empty($address)) ? $address : 'default@example.com';
     }
 
     protected function getFromName(): string
     {
         $name = config('mail.from.name');
-        return (is_string($name) && !empty($name)) ? $name : 'Default Name';
 
+        return (is_string($name) && ! empty($name)) ? $name : 'Default Name';
     }
+
     protected const TASK_ROUTE = 'tasks.show';
+
     protected function getTaskRedirectUrl(): string
     {
         return route(self::TASK_ROUTE, $this->task->id);
