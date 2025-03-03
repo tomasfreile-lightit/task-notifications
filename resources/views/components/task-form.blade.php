@@ -160,8 +160,8 @@
         if (action === 'update') {
             const taskId = formData.get('task_id');
             formData.append('id', taskId);
+            formData.append('_method', 'PUT');
             url = '{{ route('tasks.create') }}/' + taskId;
-            method = 'PUT';
         }
 
         fetch(url, {
