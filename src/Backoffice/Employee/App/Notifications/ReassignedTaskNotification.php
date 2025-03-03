@@ -11,7 +11,7 @@ final class ReassignedTaskNotification extends TaskAssignmentNotification
     protected function getMailMessage(): MailMessage
     {
         return (new MailMessage())
-            ->from($this->getFromEmail())
+            ->from($this->getFromAddress(), $this->getFromName())
             ->subject('Reassigned Task')
             ->view('mail.assigned-task', [
                 'header' => 'Task Reassigned',

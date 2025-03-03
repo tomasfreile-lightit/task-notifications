@@ -31,15 +31,19 @@ abstract class TaskAssignmentNotification extends Notification implements Should
 
     abstract protected function getMailMessage(): MailMessage;
 
-    protected const FROM_EMAIL = 'mail.from.from_email_lightit';
-
-    protected const TASK_ROUTE = 'tasks.show';
-
-    protected function getFromEmail(): string
+    protected function getFromAddress(): string
     {
-        return config(self::FROM_EMAIL);
+        $address = config('mail.from.address');
+        return (is_string($address) && !empty($address)) ? $address : 'default@example.com';
     }
 
+    protected function getFromName(): string
+    {
+        $name = config('mail.from.name');
+        return (is_string($name) && !empty($name)) ? $name : 'Default Name';
+
+    }
+    protected const TASK_ROUTE = 'tasks.show';
     protected function getTaskRedirectUrl(): string
     {
         return route(self::TASK_ROUTE, $this->task->id);
