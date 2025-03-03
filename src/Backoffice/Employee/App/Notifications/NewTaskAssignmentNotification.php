@@ -10,7 +10,7 @@ final class NewTaskAssignmentNotification extends TaskAssignmentNotification
 {
     protected function getMailMessage(): MailMessage
     {
-        return (new MailMessage)
+        return (new MailMessage())
             ->from($this->getFromEmail())
             ->subject('New Task Assigned')
             ->view('mail.assigned-task', [

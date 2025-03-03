@@ -12,6 +12,7 @@ use Lightit\Backoffice\Task\Domain\Models\Task;
 class Employee extends Model
 {
     use Notifiable;
+
     protected $fillable = [
         'name',
         'email',

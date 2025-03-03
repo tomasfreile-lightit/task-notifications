@@ -13,7 +13,6 @@ class UpdateTaskAction
 {
     public function execute(Task $task, TaskDTO $dto): Task
     {
-
         $previousEmployeeId = $task->employee_id;
 
         $task->update([

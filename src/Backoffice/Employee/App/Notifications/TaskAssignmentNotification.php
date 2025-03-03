@@ -6,8 +6,8 @@ namespace Lightit\Backoffice\Employee\App\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
 use Lightit\Backoffice\Task\Domain\Models\Task;
 
 abstract class TaskAssignmentNotification extends Notification implements ShouldQueue
@@ -15,7 +15,7 @@ abstract class TaskAssignmentNotification extends Notification implements Should
     use Queueable;
 
     public function __construct(
-        protected readonly Task $task
+        protected readonly Task $task,
     ) {
     }
 
@@ -32,6 +32,7 @@ abstract class TaskAssignmentNotification extends Notification implements Should
     abstract protected function getMailMessage(): MailMessage;
 
     protected const FROM_EMAIL = 'mail.from.from_email_lightit';
+
     protected const TASK_ROUTE = 'tasks.show';
 
     protected function getFromEmail(): string
