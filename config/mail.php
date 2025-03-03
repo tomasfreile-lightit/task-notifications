@@ -109,8 +109,8 @@ return [
     */
 
     'from' => [
-        'name' => env('MAIL_FROM_NAME', 'Light It'),
-        'address' => env('MAIL_FROM_ADDRESS', 'DoNotReply@lightit.io'),
+        'name' => env('LIGHTIT_FROM_NAME', 'Light It'),
+        'address' => env('LIGHTIT_FROM_EMAIL', 'DoNotReply@lightit.io'),
     ],
 
 ];
