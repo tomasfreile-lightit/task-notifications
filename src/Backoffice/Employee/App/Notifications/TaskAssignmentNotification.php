@@ -24,7 +24,7 @@ abstract class TaskAssignmentNotification extends Notification implements Should
         return ['mail'];
     }
 
-    public function toMail($notifiable): MailMessage
+    public function toMail(object $notifiable): MailMessage
     {
         return $this->getMailMessage();
     }
@@ -37,7 +37,7 @@ abstract class TaskAssignmentNotification extends Notification implements Should
 
     protected function getFromEmail(): string
     {
-        return (string) config(self::FROM_EMAIL);
+        return config(self::FROM_EMAIL);
     }
 
     protected function getTaskRedirectUrl(): string
