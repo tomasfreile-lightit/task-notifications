@@ -2,6 +2,12 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Lightit\Backoffice\Employee\App\Controllers\ListEmployeesController;
+use Lightit\Backoffice\Employee\App\Controllers\StoreEmployeeController;
+use Lightit\Backoffice\Task\App\Controllers\GetTaskController;
+use Lightit\Backoffice\Task\App\Controllers\ListTasksController;
+use Lightit\Backoffice\Task\App\Controllers\StoreTaskController;
+use Lightit\Backoffice\Task\App\Controllers\UpdateTaskController;
 use Lightit\Backoffice\Users\App\Controllers\DeleteUserController;
 use Lightit\Backoffice\Users\App\Controllers\GetUserController;
 use Lightit\Backoffice\Users\App\Controllers\ListUserController;
@@ -35,3 +41,31 @@ Route::prefix('users')
         Route::post('/', StoreUserController::class);
         Route::delete('/{user}', DeleteUserController::class);
     });
+
+/*
+|--------------------------------------------------------------------------
+| Employees Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::prefix('employees')
+    ->name('employees.')
+    ->group(static function () {
+        Route::post('/', StoreEmployeeController::class)->name('create');
+        Route::get('/', ListEmployeesController::class)->name('list');
+    });
+
+/*
+|--------------------------------------------------------------------------
+| Tasks Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::prefix('tasks')
+    ->name('tasks.')
+    ->group(function () {
+    Route::post('/', StoreTaskController::class)->name('create');
+    Route::put('/{task}', UpdateTaskController::class)->name('update');
+    Route::get('/', ListTasksController::class)->name('list');
+    Route::get('/{task}', GetTaskController::class)->name('show');
+});

@@ -96,6 +96,7 @@
     "Worksome",
     "xdebug",
     "yourserver",
-    "zustand"
+    "zustand",
+    "pgsql"
   ]
 }
