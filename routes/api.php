@@ -67,5 +67,5 @@ Route::prefix('tasks')
     Route::post('/', StoreTaskController::class)->name('create');
     Route::put('/{task}', UpdateTaskController::class)->name('update');
     Route::get('/', ListTasksController::class)->name('list');
-    Route::get('/{task}', GetTaskController::class)->name('get');
+    Route::get('/{task}', GetTaskController::class)->name('show');
 });

@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace Lightit\Backoffice\Task\App\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 use Lightit\Backoffice\Task\Domain\DataTransferObjects\TaskDTO;
 use Lightit\Backoffice\Task\Domain\Enums\TaskStatus;
+use Lightit\Backoffice\Task\Domain\Models\Task;
 
-class UpdateTaskRequest extends FormRequest
+final class UpdateTaskRequest extends FormRequest
 {
     public const TITLE = 'title';
 
@@ -23,13 +25,15 @@ class UpdateTaskRequest extends FormRequest
         return [
             self::TITLE => ['sometimes', 'string', 'max:255'],
             self::DESCRIPTION => ['sometimes', 'string'],
-            self::STATUS => ['sometimes', 'string', 'in:' . implode(',', TaskStatus::values())],
+            self::STATUS => ['sometimes', 'string', Rule::enum(TaskStatus::class)],
             self::EMPLOYEE_ID => ['sometimes', 'exists:employees,id'],
         ];
     }
 
-    public function toDto(TaskDTO $currentTask): TaskDTO
+    public function toDto(): TaskDTO
     {
+        $currentTask = $this->route('task');
+
         return new TaskDTO(
             title: $this->has(self::TITLE)
                 ? $this->string(self::TITLE)->toString()
@@ -42,7 +46,7 @@ class UpdateTaskRequest extends FormRequest
                 : $currentTask->status,
             employeeId: $this->has(self::EMPLOYEE_ID)
                 ? $this->integer(self::EMPLOYEE_ID)
-                : $currentTask->employeeId,
+                : $currentTask->employee_id,
         );
     }
 }

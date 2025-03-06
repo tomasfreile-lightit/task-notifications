@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace Lightit\Backoffice\Task\App\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 use Lightit\Backoffice\Task\Domain\DataTransferObjects\TaskDTO;
 use Lightit\Backoffice\Task\Domain\Enums\TaskStatus;
 
-class StoreTaskRequest extends FormRequest
+final class StoreTaskRequest extends FormRequest
 {
     public const TITLE = 'title';
 
@@ -23,7 +24,7 @@ class StoreTaskRequest extends FormRequest
         return [
             self::TITLE => ['required', 'string', 'max:255'],
             self::DESCRIPTION => ['required', 'string'],
-            self::STATUS => ['sometimes', 'string', 'in:' . implode(',', TaskStatus::values())],
+            self::STATUS => ['sometimes', 'string', Rule::enum(TaskStatus::class)],
             self::EMPLOYEE_ID => ['required', 'exists:employees,id'],
         ];
     }

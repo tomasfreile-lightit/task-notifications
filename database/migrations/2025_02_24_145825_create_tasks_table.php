@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('status')->default('pending');
             $table->foreignId('employee_id')
                         ->constrained('employees')
-                        ->nullOnDelete();
+                        ->cascadeOnDelete();
             $table->timestamps();
         });
     }

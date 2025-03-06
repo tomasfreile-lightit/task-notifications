@@ -9,7 +9,7 @@ use Lightit\Backoffice\Employee\Domain\Models\Employee;
 use Lightit\Backoffice\Task\Domain\DataTransferObjects\TaskDTO;
 use Lightit\Backoffice\Task\Domain\Models\Task;
 
-class UpdateTaskAction
+final readonly class UpdateTaskAction
 {
     public function execute(Task $task, TaskDTO $dto): Task
     {

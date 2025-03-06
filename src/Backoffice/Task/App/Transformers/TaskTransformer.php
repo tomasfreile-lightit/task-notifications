@@ -7,7 +7,7 @@ namespace Lightit\Backoffice\Task\App\Transformers;
 use Flugg\Responder\Transformers\Transformer;
 use Lightit\Backoffice\Task\Domain\Models\Task;
 
-class TaskTransformer extends Transformer
+final class TaskTransformer extends Transformer
 {
     public function transform(Task $task): array
     {

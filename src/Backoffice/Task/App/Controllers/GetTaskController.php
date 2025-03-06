@@ -9,7 +9,7 @@ use Lightit\Backoffice\Task\App\Transformers\TaskTransformer;
 use Lightit\Backoffice\Task\Domain\Actions\GetTaskAction;
 use Lightit\Backoffice\Task\Domain\Models\Task;
 
-class GetTaskController
+final readonly class GetTaskController
 {
     public function __invoke(Task $task, GetTaskAction $action): JsonResponse
     {

@@ -7,7 +7,7 @@ namespace Lightit\Backoffice\Task\Domain\Actions;
 use Illuminate\Database\Eloquent\Collection;
 use Lightit\Backoffice\Task\Domain\Models\Task;
 
-class ListTasksAction
+final readonly class ListTasksAction
 {
     /**
      * @return Collection<int, Task>

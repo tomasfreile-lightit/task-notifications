@@ -11,18 +11,13 @@ use Lightit\Backoffice\Task\Domain\Actions\UpdateTaskAction;
 use Lightit\Backoffice\Task\Domain\DataTransferObjects\TaskDTO;
 use Lightit\Backoffice\Task\Domain\Models\Task;
 
-class UpdateTaskController
+final readonly class UpdateTaskController
 {
     public function __invoke(Task $task, UpdateTaskRequest $request, UpdateTaskAction $action): JsonResponse
     {
-        $currentTaskDto = new TaskDTO(
-            title: $task->title,
-            description: $task->description,
-            status: $task->status,
-            employeeId: $task->employee_id,
-        );
+        $currentTaskDto = $request->toDto();
 
-        $updatedTask = $action->execute($task, $request->toDto($currentTaskDto));
+        $updatedTask = $action->execute($task, $currentTaskDto);
 
         return responder()
             ->success($updatedTask, TaskTransformer::class)

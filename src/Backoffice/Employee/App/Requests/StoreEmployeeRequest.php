@@ -7,7 +7,7 @@ namespace Lightit\Backoffice\Employee\App\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Lightit\Backoffice\Employee\Domain\DataTransferObjects\EmployeeDTO;
 
-class StoreEmployeeRequest extends FormRequest
+final class StoreEmployeeRequest extends FormRequest
 {
     public const NAME = 'name';
 

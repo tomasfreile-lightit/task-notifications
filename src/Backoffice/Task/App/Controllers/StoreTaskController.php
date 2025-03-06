@@ -9,7 +9,7 @@ use Lightit\Backoffice\Task\App\Requests\StoreTaskRequest;
 use Lightit\Backoffice\Task\App\Transformers\TaskTransformer;
 use Lightit\Backoffice\Task\Domain\Actions\StoreTaskAction;
 
-class StoreTaskController
+final readonly class StoreTaskController
 {
     public function __invoke(StoreTaskRequest $request, StoreTaskAction $action): JsonResponse
     {

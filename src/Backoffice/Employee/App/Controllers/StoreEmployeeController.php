@@ -9,7 +9,7 @@ use Lightit\Backoffice\Employee\App\Requests\StoreEmployeeRequest;
 use Lightit\Backoffice\Employee\App\Transformers\EmployeeTransformer;
 use Lightit\Backoffice\Employee\Domain\Actions\StoreEmployeeAction;
 
-class StoreEmployeeController
+final readonly class StoreEmployeeController
 {
     public function __invoke(StoreEmployeeRequest $request, StoreEmployeeAction $action): JsonResponse
     {
