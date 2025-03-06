@@ -49,9 +49,10 @@ Route::prefix('users')
 */
 
 Route::prefix('employees')
+    ->name('employees.')
     ->group(static function () {
-        Route::post('/', StoreEmployeeController::class)->name('employees.create');
-        Route::get('/', ListEmployeesController::class)->name('employees.list');
+        Route::post('/', StoreEmployeeController::class)->name('create');
+        Route::get('/', ListEmployeesController::class)->name('list');
     });
 
 /*
@@ -60,9 +61,11 @@ Route::prefix('employees')
 |--------------------------------------------------------------------------
 */
 
-Route::prefix('tasks')->group(function () {
-    Route::post('/', StoreTaskController::class)->name('tasks.create');
-    Route::put('/{task}', UpdateTaskController::class)->name('tasks.update');
-    Route::get('/', ListTasksController::class)->name('tasks.list');
-    Route::get('/{task}', GetTaskController::class)->name('tasks.show');
+Route::prefix('tasks')
+    ->name('tasks.')
+    ->group(function () {
+    Route::post('/', StoreTaskController::class)->name('create');
+    Route::put('/{task}', UpdateTaskController::class)->name('update');
+    Route::get('/', ListTasksController::class)->name('list');
+    Route::get('/{task}', GetTaskController::class)->name('get');
 });
