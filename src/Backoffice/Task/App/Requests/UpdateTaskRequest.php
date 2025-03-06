@@ -30,10 +30,8 @@ final class UpdateTaskRequest extends FormRequest
         ];
     }
 
-    public function toDto(): TaskDTO
+    public function toDto(Task $currentTask): TaskDTO
     {
-        $currentTask = $this->route('task');
-
         return new TaskDTO(
             title: $this->has(self::TITLE)
                 ? $this->string(self::TITLE)->toString()

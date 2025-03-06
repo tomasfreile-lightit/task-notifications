@@ -13,7 +13,7 @@ final class ReassignedTaskNotification extends TaskAssignmentNotification
         return (new MailMessage())
             ->from($this->getFromAddress(), $this->getFromName())
             ->subject('Reassigned Task')
-            ->view('mail.assigned-task', [
+            ->markdown('mail.assigned-task', [
                 'header' => 'Task Reassigned',
                 'title' => $this->task->title,
                 'description' => $this->task->description,
